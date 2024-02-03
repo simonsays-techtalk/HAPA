@@ -2,3 +2,4 @@ If you install Homeassistant, a Heishamon adapter for a Panasonic heatpump and t
 Thanks to TheHogNL and Denneappel for there work on the hardware and scripts
 
 You may/will need to adjust the scripts to find the best working configuration for your building/house.
+Use at your own risk.
