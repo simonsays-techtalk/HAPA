@@ -1,0 +1,35 @@
+#Use this script carefully as it shutsdown the entire heatpump!
+
+alias: warmtepomp - uit na compr stop
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.panasonic_heat_pump_main_compressor_freq
+    below: 1
+condition:
+  - condition: state
+    entity_id: switch.panasonic_heat_pump_main_heatpump_state
+    state: "on"
+  - condition: state
+    entity_id: switch.panasonic_heat_pump_main_defrosting_state
+    state: "off"
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.panasonic_heat_pump_main_heatpump_state
+  - service: automation.turn_off
+    data:
+      stop_actions: false
+    target:
+      entity_id: automation.warmtepomp_uit_na_compr_stop
+    enabled: false
+  - service: notify.notify
+    data:
+      title: Warmtepomp
+      message: Warmtepomp status is aangepast
+mode: single
