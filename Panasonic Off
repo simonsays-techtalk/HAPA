@@ -1,4 +1,4 @@
-#Use this script carefully as it shutsdown the entire heatpump!
+#WARNING: Use this script carefully as it shuts the entire heatpump down/off!
 
 alias: warmtepomp - uit na compr stop
 description: ""
