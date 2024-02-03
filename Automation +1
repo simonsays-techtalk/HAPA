@@ -1,0 +1,71 @@
+alias: warmtepomp - thermostaat +1
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.aquarea_compressor_running
+    attribute: position
+    to: above
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  - platform: state
+    entity_id:
+      - sensor.woonkamer_temp_difference
+condition:
+  - condition: numeric_state
+    entity_id: sensor.sensor_temperatuur_woonkamer_afgeleidesensor
+    below: 0.4
+  - condition: numeric_state
+    entity_id: sensor.woonkamer_temp_difference
+    below: -0.3
+  - alias: compressor draait of is lang genoeg uit.
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.aquarea_compressor_running
+        state: "on"
+      - condition: state
+        entity_id: binary_sensor.aquarea_compressor_running
+        state: "off"
+        for:
+          hours: 2
+          minutes: 0
+          seconds: 0
+      - condition: numeric_state
+        entity_id: sensor.woonkamer_temp_difference
+        below: -1
+action:
+  - if:
+      - condition: state
+        entity_id: binary_sensor.aquarea_compressor_running
+        state: "off"
+    then:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.panasonic_heat_pump_main_heatpump_state
+      - service: notify.pushover
+        data:
+          message: compressor start
+        enabled: false
+  - service: number.set_value
+    data:
+      value: >-
+        {{ states('number.panasonic_heat_pump_main_z1_heat_request_temp') |
+        float + 1 }}
+    target:
+      entity_id: number.panasonic_heat_pump_main_z1_heat_request_temp
+    alias: Heat shift +1
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - service: notify.notify
+    metadata: {}
+    data:
+      message: De warmtepomp heeft te temperatuur met +1 verhoogd
+      title: Warmtepomp aanpassing
+mode: single
