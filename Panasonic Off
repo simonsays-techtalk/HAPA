@@ -1,6 +1,6 @@
 #WARNING: Use this script carefully as it shuts the entire heatpump down/off!
 
-alias: warmtepomp - uit na compr stop
+alias: warmtepomp - uit na compr stop #Heatpump off after compressor stop
 description: ""
 trigger:
   - platform: numeric_state
@@ -26,10 +26,10 @@ action:
     data:
       stop_actions: false
     target:
-      entity_id: automation.warmtepomp_uit_na_compr_stop
+      entity_id: automation.warmtepomp_uit_na_compr_stop #Heatpump off after compressor stop
     enabled: false
   - service: notify.notify
     data:
       title: Warmtepomp
-      message: Warmtepomp status is aangepast
+      message: Warmtepomp status is aangepast #notify Heatpump adjustment
 mode: single
