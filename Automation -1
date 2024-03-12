@@ -1,4 +1,4 @@
-alias: warmtepomp - thermostaat -1
+alias: warmtepomp - thermostaat -1 #Heatpump -1
 description: ""
 trigger:
   - platform: state
@@ -55,6 +55,6 @@ action:
   - service: notify.notify #Optional
     metadata: {}
     data:
-      message: De warmtepomp heeft te temperatuur met +1 verhoogd
-      title: Warmtepomp aanpassing
+      message: De warmtepomp heeft te temperatuur met +1 verhoogd #Notify message Heatpump temp raised +1
+      title: Warmtepomp aanpassing #Heatpump adjustment
 mode: single
