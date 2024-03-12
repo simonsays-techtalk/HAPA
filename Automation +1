@@ -1,4 +1,4 @@
-alias: warmtepomp - thermostaat +1
+alias: warmtepomp - thermostaat +1 #Heatpump +1
 description: ""
 trigger:
   - platform: state
