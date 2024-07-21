@@ -1,4 +1,4 @@
-If you install Homeassistant, a Heishamon adapter for a Panasonic heatpump and the required software you can use these scripts to start controlling your heatpump.
+If you install Homeassistant, a Heishamon adapter for a Panasonic heatpump and the required software, you can use these scripts to start controlling your heatpump.
 Thanks to TheHogNL and Denneappel for there work on the hardware and scripts.
 
 These scripts where tested on my own WH-MDC07J3E5 Panasonic Heatpump.
