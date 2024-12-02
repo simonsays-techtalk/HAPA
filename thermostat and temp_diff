@@ -1,7 +1,7 @@
 climate:
   - platform: generic_thermostat
     name: Thermostaat Woonkamer #Thermostat living
-    heater: switch.0x7cb03eaa0a0c1b45 #switch.aquarea_main_power #Use a virtual switch here!
+    heater: switch.0x7cb03eaa0a0c1**** #switch.aquarea_main_power Use the Panasonic main switch here.
     target_sensor: sensor.temperatuursensor_woonkamer #Temperature sensor living
     unique_id: Thermostaat Woonkamer WP #Thermostat living
     min_temp: 15
