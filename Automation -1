@@ -52,9 +52,4 @@ action:
       minutes: 30
       seconds: 0
       milliseconds: 0
-  - service: notify.notify #Optional
-    metadata: {}
-    data:
-      message: De warmtepomp heeft te temperatuur met +1 verhoogd #Notify message Heatpump temp raised +1
-      title: Warmtepomp aanpassing #Heatpump adjustment
 mode: single
