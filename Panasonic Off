@@ -26,10 +26,11 @@ action:
     data:
       stop_actions: false
     target:
-      entity_id: automation.warmtepomp_uit_na_compr_stop #Heatpump off after compressor stop
+      entity_id: automation.warmtepomp_uit_na_compr_stop
     enabled: false
-  - service: notify.notify
-    data:
+    action: automation.turn_off
+  - data:
       title: Warmtepomp
-      message: Warmtepomp status is aangepast #notify Heatpump adjustment
+      message: Warmtepomp is uitgeschakeld
+    action: notify.notify
 mode: single
