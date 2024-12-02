@@ -46,11 +46,6 @@ action:
         data: {}
         target:
           entity_id: switch.panasonic_heat_pump_main_heatpump_state
-      - service: notify.notify
-        data:
-          message: De warmtepomp is gestart #Compressor start
-          title: Warmtepomp melding #Heatpump message
-        enabled: false
   - service: number.set_value
     data:
       value: >-
